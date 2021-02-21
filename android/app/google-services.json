@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "185803530767",
+    "project_id": "fll-app-5cf3a",
+    "storage_bucket": "fll-app-5cf3a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185803530767:android:b2f75dec7c7ba94556f97a",
+        "android_client_info": {
+          "package_name": "com.example.FLL"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185803530767-69pqf06vin3n6rafrkqokl816s7i1kah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsoecaLcIgJrWtowQcACZjWkuQZznkmR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185803530767-69pqf06vin3n6rafrkqokl816s7i1kah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
