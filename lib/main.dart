@@ -1,3 +1,5 @@
+import 'package:geolocation/geolocation.dart';
+
 import './providers/core.dart';
 import './screens/auth_screen.dart';
 import './screens/main_screen.dart';
@@ -13,6 +15,18 @@ import 'providers/data_fetcher.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  final GeolocationResult result = await Geolocation.isLocationOperational();
+  if (result.isSuccessful) {
+  } else {
+    final GeolocationResult result =
+        await Geolocation.requestLocationPermission(
+      permission: const LocationPermission(
+        android: LocationPermissionAndroid.fine,
+      ),
+      openSettingsIfDenied: true,
+    );
+  }
+
   runApp(MyApp());
 }
 
@@ -31,8 +45,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
-    print(
-        "LifecycleWatcherState#didChangeAppLifecycleState state=${state.toString()}");
     if (state == AppLifecycleState.paused) {
       startForegroundService();
     } else if (state == AppLifecycleState.resumed) {

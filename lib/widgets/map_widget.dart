@@ -55,16 +55,12 @@ class _MapWidgetState extends State<MapWidget> {
       (result) {
         if (result.isSuccessful) {
           if (widget.automatickeSledovanie &&
-              context != null &&
-              Provider.of<Core>(context, listen: false).selectedPageIndex ==
-                  1) {
+              context != null ) {
             controller.move(
                 LatLng(result.location.latitude, result.location.longitude),
                 18);
           } else {
-            if (context != null &&
-                Provider.of<Core>(context, listen: false).selectedPageIndex ==
-                    1) {
+            if (context != null) {
               controller.rotate(0);
             }
           }
@@ -88,7 +84,6 @@ class _MapWidgetState extends State<MapWidget> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.lenSvojeUzemie);
     return StreamBuilder(
       stream: FirebaseFirestore.instance.collection('data').snapshots(),
       builder: (ctx, snapshot) => FlutterMap(

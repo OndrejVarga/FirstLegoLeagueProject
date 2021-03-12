@@ -1,3 +1,6 @@
+import 'package:FLL/providers/data_fetcher.dart';
+import 'package:provider/provider.dart';
+
 import '../auth_widgets/auth_form_color_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -34,14 +37,13 @@ class _AuthFormState extends State<AuthForm> {
     final validated = _formKey.currentState.validate();
     if (validated) {
       if (_weight < 10 && !_isLogIn) {
-        print(_isLogIn);
         showDialog(
             context: context,
             builder: (_) => AlertDialog(
                   title: Text("Pozor"),
                   content: Text("Nezadal si hmotnosť"),
                   actions: <Widget>[
-                    FlatButton(
+                    TextButton(
                       child: Text('Ok'),
                       onPressed: () {
                         Navigator.of(context).pop();
@@ -74,18 +76,18 @@ class _AuthFormState extends State<AuthForm> {
             decoration: const InputDecoration(hintText: "Hmotnosť"),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: const Text('Nechcem uviesť'),
               onPressed: () {
                 _weight = 80;
                 Navigator.pop(context);
               },
             ),
-            FlatButton(
+            TextButton(
               child: const Text('Ok'),
               onPressed: () {
-                _weight = int.parse(_textFieldController.text);
-                if (_weight > 0) {
+                _weight = int.tryParse(_textFieldController.text);
+                if (_weight != null && _weight > 20) {
                   Navigator.pop(context);
                 }
               },
@@ -132,24 +134,29 @@ class _AuthFormState extends State<AuthForm> {
                 ),
                 if (!_isLogIn)
                   TextFormField(
-                    style: const TextStyle(
-                      color: Colors.white,
-                    ),
-                    key: const ValueKey('username'),
-                    keyboardType: TextInputType.name,
-                    decoration: const InputDecoration(
-                        labelText: 'Meno',
-                        labelStyle: const TextStyle(color: Colors.white)),
-                    onSaved: (value) {
-                      _username = value;
-                    },
-                    validator: (value) {
-                      if (value.isEmpty || value.length < 4) {
-                        return 'Meno musí obsahovať najmenej 4 znaky';
-                      }
-                      return null;
-                    },
-                  ),
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
+                      key: const ValueKey('username'),
+                      keyboardType: TextInputType.name,
+                      decoration: const InputDecoration(
+                          labelText: 'Meno',
+                          labelStyle: const TextStyle(color: Colors.white)),
+                      onSaved: (value) {
+                        _username = value;
+                      },
+                      validator: (value) {
+                        if (value.isEmpty ||
+                            value.length < 4 ||
+                            value.length > 20) {
+                          return 'Meno musí obsahovať najmenej 4 a najviac 20 znakov';
+                        } else if (!Provider.of<DataFetcher>(context,
+                                listen: false)
+                            .checkValiability(value)) {
+                          return 'Toto meno je už zabraté';
+                        }
+                        return null;
+                      }),
                 TextFormField(
                   style: const TextStyle(
                     color: Colors.white,
@@ -164,8 +171,10 @@ class _AuthFormState extends State<AuthForm> {
                   },
                   //Kontrola textu zadaného do poľa
                   validator: (value) {
-                    if (value.isEmpty || value.length < 7) {
-                      return 'Heslo musí byť minimálne 7 znakov dlhé';
+                    if (value.isEmpty ||
+                        value.length < 7 ||
+                        value.length > 20) {
+                      return 'Heslo musí obsahovať najmenej 7 a najviac 20 zankov';
                     }
                     return null;
                   },
@@ -197,7 +206,10 @@ class _AuthFormState extends State<AuthForm> {
                   height: 15,
                 ),
                 if (!_isLogIn)
-                  RaisedButton(
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Theme.of(context).primaryColor,
+                    ),
                     onPressed: () {
                       _displayTextInputDialog(context);
                     },
@@ -206,22 +218,26 @@ class _AuthFormState extends State<AuthForm> {
                 const SizedBox(
                   height: 15,
                 ),
-                RaisedButton(
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Theme.of(context).primaryColor,
+                  ),
                   onPressed: _trySubmit,
                   child: widget.isLoading
                       ? CircularProgressIndicator()
                       : Text(_isLogIn ? "Prihlásiť sa" : "Zaregistrovať sa"),
                 ),
                 if (!widget.isLoading)
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       setState(() {
                         _isLogIn = !_isLogIn;
                       });
                     },
-                    child:
-                        Text(_isLogIn ? "Vytvoriť nový účet" : "Už mám účet"),
-                    textColor: Colors.white,
+                    child: Text(
+                      _isLogIn ? "Vytvoriť nový účet" : "Už mám účet",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
               ],
             ),

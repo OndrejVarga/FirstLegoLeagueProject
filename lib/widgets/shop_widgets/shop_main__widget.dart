@@ -32,7 +32,7 @@ class _MainShopWidgetState extends State<MainShopWidget> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                FlatButton(
+                TextButton(
                   child:const Text('Vlastnené'),
                   onPressed: () {
                     _selectPage(0);
@@ -41,7 +41,7 @@ class _MainShopWidgetState extends State<MainShopWidget> {
                 const SizedBox(
                   width: 30,
                 ),
-                FlatButton(
+                TextButton(
                   child:const Text('Nové'),
                   onPressed: () {
                     _selectPage(1);

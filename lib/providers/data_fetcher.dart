@@ -36,9 +36,9 @@ class DataFetcher with ChangeNotifier {
             Polygon(
                 points: convertFromServerToLatLngPoints(
                     snapshot.docs[i].data()['taken_territory']),
-                color: Color(_currUserInformation['color']).withOpacity(0.1),
+                color: Color(_currUserInformation['color']).withOpacity(0.3),
                 borderColor:
-                    Color(_currUserInformation['color']).withOpacity(0.1),
+                    Color(_currUserInformation['color']).withOpacity(0.3),
                 borderStrokeWidth: 2),
           );
         } else {
@@ -50,7 +50,7 @@ class DataFetcher with ChangeNotifier {
             Polygon(
               points: convertFromServerToLatLngPoints(
                   snapshot.docs[i].data()['taken_territory']),
-              color: Color(color).withOpacity(0.1),
+              color: Color(color).withOpacity(0.3),
             ),
           );
         }
@@ -59,11 +59,12 @@ class DataFetcher with ChangeNotifier {
     return [];
   }
 
-  Future<void> fetchInitData() async {
+  Future<bool> fetchInitData() async {
     await fetchUserInfo();
     await fetchTableData();
     await fetchColorOfOtherUser();
     await fetchSettings();
+    return true;
   }
 
 //Getting user information
@@ -107,7 +108,6 @@ class DataFetcher with ChangeNotifier {
 
 //Get other users color
   Future<void> fetchColorOfOtherUser() async {
-    print('getting colors');
     _userColors.clear();
     var data = await FirebaseFirestore.instance.collection('users').get();
     data.docs.forEach((element) {
@@ -193,6 +193,15 @@ class DataFetcher with ChangeNotifier {
         .doc(FirebaseAuth.instance.currentUser.uid)
         .update({'color': color});
     notifyListeners();
+  }
+
+  bool checkValiability(String name) {
+    for (int i = 0; i < _tableData.length; i++) {
+      if (_tableData[i]['username'] == name) {
+        return false;
+      }
+    }
+    return true;
   }
 
 //Utils function----------------------------------------------------------------------

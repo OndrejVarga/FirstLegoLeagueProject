@@ -11,9 +11,8 @@ class UserInfo extends StatelessWidget {
         Provider.of<DataFetcher>(context,listen: false).currUserInformation;
     infos.add(UserInfoWidget('Meno', userData['username']));
     infos.add(UserInfoWidget('Poradie', (userData['index']+1).toString()));
-    infos.add(UserInfoWidget('Farba', userData['color'].toString()));
     infos.add(UserInfoWidget('Obsah zabratého územia',
-       '${userData['currAreaOfTerritory'].toInt().toString()} m*m'));
+       '${userData['currAreaOfTerritory'].toInt().toString()} m²'));
     infos.add(UserInfoWidget('Vzdialenosť','${userData['length'].toInt().toString()} m'));
     infos.add(UserInfoWidget('Počet bodov', userData['points'].toString()));
     infos.add(UserInfoWidget(
@@ -31,7 +30,7 @@ class UserInfo extends StatelessWidget {
                   child: Column(
               children: [
                 ...infos,
-                FlatButton(child: Text("Späť"), onPressed:  () => Navigator.of(context).pop()),
+                TextButton(child: Text("Späť", style: TextStyle(color: Colors.white)), onPressed:  () => Navigator.of(context).pop()),
               ],
             ),
         ),

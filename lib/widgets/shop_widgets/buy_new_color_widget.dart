@@ -19,11 +19,11 @@ class _BuyNewColorWidgetState extends State<BuyNewColorWidget> {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title:const Text("Pozor"),
-        content:const Text("Nemáš dostatok bodov!"),
+        title: const Text("Pozor"),
+        content: const Text("Nemáš dostatok bodov!"),
         actions: <Widget>[
-          FlatButton(
-            child:const Text('Ok'),
+          TextButton(
+            child: const Text('Ok'),
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -60,10 +60,13 @@ class _BuyNewColorWidgetState extends State<BuyNewColorWidget> {
           const SizedBox(
             height: 20,
           ),
-          RaisedButton(
-            child:const Text(
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Theme.of(context).accentColor,
+            ),
+            child: const Text(
               'Kúp si novú farbu za 1000!',
-              style:const TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.white),
             ),
             onPressed: Provider.of<DataFetcher>(context, listen: false)
                         .currUserInformation['points'] >

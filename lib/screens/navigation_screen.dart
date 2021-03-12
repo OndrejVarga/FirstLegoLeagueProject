@@ -20,7 +20,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
     super.didChangeDependencies();
     if (!isInit) {
       isInit = true;
-      await Provider.of<DataFetcher>(context, listen: false).fetchInitData();
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (!Provider.of<DataFetcher>(context, listen: false)
             .currUserInformation['tutorial']) {
@@ -43,7 +42,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
               content: Text(
                   "Pri zaberaní územia si nemôžeš pozrieť ${error[index == 0 ? 1 : 0]}!"),
               actions: <Widget>[
-                FlatButton(
+                TextButton(
                   child: const Text('Ok'),
                   onPressed: () {
                     Navigator.of(context).pop();

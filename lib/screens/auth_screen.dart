@@ -31,8 +31,7 @@ class _AuthScreenState extends State<AuthScreen> {
       if (isLogIn) {
         authResult = await _auth.signInWithEmailAndPassword(
             email: email, password: password);
-      }
-      else {
+      } else {
         authResult = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
         await FirebaseFirestore.instance
@@ -49,7 +48,7 @@ class _AuthScreenState extends State<AuthScreen> {
           'points': 0,
           'totalSteps': 0,
           'weight': weight,
-          'calories':0
+          'calories': 0
         });
       }
     } catch (err) {
@@ -57,7 +56,7 @@ class _AuthScreenState extends State<AuthScreen> {
       if (err.message != null) {
         message = err.message;
       }
-      Scaffold.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(message),
         backgroundColor: Theme.of(context).errorColor,
       ));
@@ -71,7 +70,7 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:const Text('Fll App'),
+        title: const Text('Fll App'),
       ),
       backgroundColor: Theme.of(context).primaryColor,
       body: Center(

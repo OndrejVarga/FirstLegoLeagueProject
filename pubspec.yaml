@@ -39,7 +39,8 @@ dependencies:
   flutter_foreground_service_plugin: ^0.1.7
   flutter_background_location: ^0.0.4
   geolocation: ^1.1.2
-
+  flutter_launcher_icons: "^0.8.0"
+  
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -48,6 +49,15 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_launcher_icons:
+  path: ../
+
+flutter_icons:
+  image_path: "assets/images/logo.png"
+  android: true
+  adaptive_icon_background: "assets/images/logo.png"
+  adaptive_icon_foreground: "assets/images/logo.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -31,7 +31,7 @@ class _ShopDetailsState extends State<ShopDetails> {
             const SizedBox(
               height: 5,
             ),
-            ShopDetailsInfo('Územie (m*m)',Provider.of<DataFetcher>(context).currUserInformation['currAreaOfTerritory'].toInt().toString()),
+            ShopDetailsInfo('Územie (m²)',Provider.of<DataFetcher>(context).currUserInformation['currAreaOfTerritory'].toInt().toString()),
             const SizedBox(
               height: 5,
             ),
@@ -39,7 +39,7 @@ class _ShopDetailsState extends State<ShopDetails> {
             const SizedBox(
               height: 15,
             ),
-            FlatButton(onPressed:  () => Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => UserInfo() )), child:Text("Zisti viac", style: TextStyle(color: Colors.white),))
+            TextButton(onPressed:  () => Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => UserInfo() )), child:Text("Zisti viac", style: TextStyle(color: Colors.white),))
           ],
         ),
       ),

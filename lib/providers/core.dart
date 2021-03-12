@@ -43,7 +43,6 @@ class Core with ChangeNotifier {
       var avgSpeed = (mt.SphericalUtil.computeLength(_routePoints.map((e) => mt.LatLng(e.latitude, e.longitude)).toList()) /_endTime.difference(_startTime).inSeconds);
 
       if (avgSpeed.round() > Provider.of<DataFetcher>(context, listen: false).settings['maxSpeed']) {
-        print('avg' + avgSpeed.toString());
         _showSpeedDialog(context);
       } else {
         List<LatLng> newTerritory = TerritoryManagment.validateNewTerritory(_routePoints);
@@ -124,7 +123,7 @@ class Core with ChangeNotifier {
         title: const Text("Pozor"),
         content: Text("Prekročil si maximálnu povolené rýchlosť(${Provider.of<DataFetcher>(context,listen: false).settings['maxSpeed']})!"),
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             child:const Text('Ok'),
             onPressed: () {
               Navigator.of(context).pop();

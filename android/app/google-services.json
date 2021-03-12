@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "185803530767",
-    "project_id": "fll-app-5cf3a",
-    "storage_bucket": "fll-app-5cf3a.appspot.com"
+    "project_number": "688728903860",
+    "project_id": "juniorapp-19478",
+    "storage_bucket": "juniorapp-19478.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:185803530767:android:b2f75dec7c7ba94556f97a",
+        "mobilesdk_app_id": "1:688728903860:android:dc61e720207de74f2587e1",
         "android_client_info": {
           "package_name": "com.example.FLL"
         }
       },
       "oauth_client": [
         {
-          "client_id": "185803530767-69pqf06vin3n6rafrkqokl816s7i1kah.apps.googleusercontent.com",
+          "client_id": "688728903860-9qdt1vmioe6ceknrgh3h58eg2df6iq8m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCsoecaLcIgJrWtowQcACZjWkuQZznkmR0"
+          "current_key": "AIzaSyDOmwLUWucjKvjh5j6aXXBifSnYIhkjCIc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "185803530767-69pqf06vin3n6rafrkqokl816s7i1kah.apps.googleusercontent.com",
+              "client_id": "688728903860-9qdt1vmioe6ceknrgh3h58eg2df6iq8m.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

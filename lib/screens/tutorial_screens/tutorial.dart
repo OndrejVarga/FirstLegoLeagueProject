@@ -35,7 +35,7 @@ class _TutorialTutorialState extends State<TutorialTutorial> {
                 children: [
                   Padding(
                     padding: EdgeInsets.all(20),
-                    child: FlatButton(
+                    child: TextButton(
                       onPressed: () {
                         setState(() {
                           if (widget.currIndex + 1 == tutorial.length) {
