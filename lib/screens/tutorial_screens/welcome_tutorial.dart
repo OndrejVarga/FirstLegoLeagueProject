@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class WelcomScreen extends StatelessWidget {
-  static const routeName = 'Welcome';
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +24,7 @@ class WelcomScreen extends StatelessWidget {
               'assets/images/logo.png',
               fit: BoxFit.cover,
             )),
+                    const SizedBox(height: 400),
       ],
     );
   }

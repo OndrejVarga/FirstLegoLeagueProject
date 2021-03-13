@@ -1,5 +1,5 @@
-import 'package:FLL/providers/data_fetcher.dart';
-import 'package:FLL/widgets/user_info_widget.dart';
+import '../providers/data_fetcher.dart';
+import '../widgets/user_info_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,10 +15,8 @@ class UserInfo extends StatelessWidget {
        '${userData['currAreaOfTerritory'].toInt().toString()} m²'));
     infos.add(UserInfoWidget('Vzdialenosť','${userData['length'].toInt().toString()} m'));
     infos.add(UserInfoWidget('Počet bodov', userData['points'].toString()));
-    infos.add(UserInfoWidget(
-        'Počet prejdených krokov', userData['totalSteps'].toString()));
     infos.add(UserInfoWidget('Hmotnosť', '${userData['weight']} kg'.toString()));
-     infos.add(UserInfoWidget('Spálené kalórie', '${userData['calories']} kcal'.toString()));
+     infos.add(UserInfoWidget('Spálené kalórie', '${userData['calories'].toInt().toString()} kcal'.toString()));
 
     return Scaffold(
        appBar: AppBar(

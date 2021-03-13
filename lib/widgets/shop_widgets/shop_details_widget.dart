@@ -1,4 +1,4 @@
-import 'package:FLL/screens/user_info_screen.dart';
+import 'package:fll/screens/user_info_screen.dart';
 
 import '../../providers/data_fetcher.dart';
 import './shop_details_info_widget.dart';

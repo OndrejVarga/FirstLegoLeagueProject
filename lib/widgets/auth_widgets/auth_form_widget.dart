@@ -1,4 +1,4 @@
-import 'package:FLL/providers/data_fetcher.dart';
+import 'package:fll/providers/data_fetcher.dart';
 import 'package:provider/provider.dart';
 
 import '../auth_widgets/auth_form_color_picker.dart';

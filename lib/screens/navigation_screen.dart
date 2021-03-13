@@ -61,6 +61,10 @@ class _NavigationScreenState extends State<NavigationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    bool _automatickeSledovanie =
+        Provider.of<Core>(context).automatickeSledovanie;
+    bool _lenSvojUzemie = Provider.of<Core>(context).lenSvojeUzemie;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(Provider.of<Core>(context, listen: false).pages[
@@ -70,34 +74,48 @@ class _NavigationScreenState extends State<NavigationScreen> {
           PopupMenuButton(
             color: Theme.of(context).accentColor,
             itemBuilder: (_) => [
-              PopupMenuItem(
-                child: const Text('Automatické následovanie',
-                    style: const TextStyle(color: Colors.white)),
+              CheckedPopupMenuItem(
+                enabled: true,
+                checked: _automatickeSledovanie,
                 value: 1,
-              ),
-              PopupMenuItem(
-                child: const Text('Len svoje územia',
-                    style: const TextStyle(color: Colors.white)),
-                value: 2,
-              ),
-              PopupMenuItem(
-                child: const Text(
-                  'Odhlásenie',
-                  style: const TextStyle(color: Colors.white),
+                child: new Text(
+                  'Automaticke Sledovanie',
+                  style: TextStyle(color: Colors.white),
                 ),
-                value: 3,
               ),
-              PopupMenuItem(
-                child: const Text('Odísť',
-                    style: const TextStyle(color: Colors.white)),
+              CheckedPopupMenuItem(
+                enabled: true,
+                checked: _lenSvojUzemie,
+                value: 2,
+                child: new Text('Len Svoje Územia',
+                    style: TextStyle(color: Colors.white)),
+              ),
+              CheckedPopupMenuItem(
+                enabled: true,
+                checked: false,
+                value: 3,
+                child: new Text('O aplikácii',
+                    style: TextStyle(color: Colors.white)),
+              ),
+              CheckedPopupMenuItem(
+                enabled: true,
+                checked: false,
                 value: 4,
+                child: new Text('Odhlásenie',
+                    style: TextStyle(color: Colors.white)),
+              ),
+              CheckedPopupMenuItem(
+                enabled: true,
+                checked: false,
+                value: 5,
+                child: new Text('Odísť', style: TextStyle(color: Colors.white)),
               ),
             ],
             icon: const Icon(Icons.settings),
             onSelected: (selectedValue) async {
               setState(
                 () {
-                  if (selectedValue == 3) {
+                  if (selectedValue == 4) {
                     FirebaseAuth.instance.signOut();
                   } else if (selectedValue == 1) {
                     Provider.of<Core>(context, listen: false)
@@ -105,13 +123,15 @@ class _NavigationScreenState extends State<NavigationScreen> {
                   } else if (selectedValue == 2) {
                     Provider.of<Core>(context, listen: false)
                         .changeLenSvojeUzemie();
+                  } else if (selectedValue == 3) {
+                    Navigator.of(context).pushNamed(TutorialTutorial.routeName);
                   }
                 },
               );
               bool isRunning = await FlutterForegroundServicePlugin
                   .isForegroundServiceRunning();
 
-              if (selectedValue == 4) {
+              if (selectedValue == 5) {
                 Provider.of<DataFetcher>(context, listen: false)
                     .updateUserData();
                 if (isRunning) {
@@ -128,8 +148,8 @@ class _NavigationScreenState extends State<NavigationScreen> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
         backgroundColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Theme.of(context).accentColor,
+        unselectedItemColor: Colors.white.withAlpha(70),
+        selectedItemColor: Colors.white,
         currentIndex: Provider.of<Core>(context).selectedPageIndex,
         type: BottomNavigationBarType.fixed,
         items: [

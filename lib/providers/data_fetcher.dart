@@ -1,4 +1,4 @@
-import 'package:FLL/utils/territory_managment.dart';
+import '../utils/territory_managment.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -37,9 +37,7 @@ class DataFetcher with ChangeNotifier {
                 points: convertFromServerToLatLngPoints(
                     snapshot.docs[i].data()['taken_territory']),
                 color: Color(_currUserInformation['color']).withOpacity(0.3),
-                borderColor:
-                    Color(_currUserInformation['color']).withOpacity(0.3),
-                borderStrokeWidth: 2),
+                ),
           );
         } else {
           var color = Colors.white.value;

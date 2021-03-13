@@ -65,12 +65,12 @@ class _BuyNewColorWidgetState extends State<BuyNewColorWidget> {
               primary: Theme.of(context).accentColor,
             ),
             child: const Text(
-              'Kúp si novú farbu za 1000!',
+              'Kúp si novú farbu za 100 000!',
               style: const TextStyle(color: Colors.white),
             ),
             onPressed: Provider.of<DataFetcher>(context, listen: false)
                         .currUserInformation['points'] >
-                    1000
+                    100000
                 ? _buyColor
                 : _donHaveMoney,
           ),

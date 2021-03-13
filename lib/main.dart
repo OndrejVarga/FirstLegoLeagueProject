@@ -18,15 +18,13 @@ void main() async {
   final GeolocationResult result = await Geolocation.isLocationOperational();
   if (result.isSuccessful) {
   } else {
-    final GeolocationResult result =
-        await Geolocation.requestLocationPermission(
+    await Geolocation.requestLocationPermission(
       permission: const LocationPermission(
         android: LocationPermissionAndroid.fine,
       ),
       openSettingsIfDenied: true,
     );
   }
-
   runApp(MyApp());
 }
 
@@ -45,14 +43,17 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) async {
-    if (state == AppLifecycleState.paused) {
-      startForegroundService();
-    } else if (state == AppLifecycleState.resumed) {
-      if (await FlutterForegroundServicePlugin.isForegroundServiceRunning()) {
-        await FlutterForegroundServicePlugin.stopForegroundService();
-      }
-    }
-  }
+        if(!(await FlutterForegroundServicePlugin.isForegroundServiceRunning())){
+          startForegroundService();
+        }
+  //   if (state == AppLifecycleState.paused) {
+  //     startForegroundService();
+  //   } else if (state == AppLifecycleState.resumed) {
+  //     if (await FlutterForegroundServicePlugin.isForegroundServiceRunning()) {
+  //       await FlutterForegroundServicePlugin.stopForegroundService();
+  //     }
+  //   }
+   }
 
   void startForegroundService() async {
     await FlutterForegroundPlugin.setServiceMethodInterval(seconds: 5);
@@ -82,11 +83,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       child: MaterialApp(
         title: 'FLL App',
         theme: ThemeData(
-          //farby ,ktoré sa používajú v aplikácii
           primaryColor: HexColor('#000a12'),
           accentColor: HexColor('#263238'),
           cardColor: HexColor('#2e7d32'),
-          //Oválne buttony
           buttonTheme: ButtonTheme.of(context).copyWith(
             textTheme: ButtonTextTheme.primary,
             shape: RoundedRectangleBorder(
@@ -94,7 +93,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             ),
           ),
         ),
-        //Základný Widget
+        debugShowCheckedModeBanner: false,
         home: MainScreen(),
         routes: {
           AuthScreen.routeName: (ctx) => AuthScreen(),

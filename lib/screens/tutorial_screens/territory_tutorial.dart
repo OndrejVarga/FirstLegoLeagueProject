@@ -17,7 +17,7 @@ class TerritoryTutorial extends StatelessWidget {
             ),
             const SizedBox(height: 20, width: 20),
             const Text(
-              'Získať územie',
+              'Zaberať si územia',
               style: const TextStyle(color: Colors.white, fontSize: 20),
             ),
             Container(
@@ -28,7 +28,7 @@ class TerritoryTutorial extends StatelessWidget {
                   'assets/images/create.gif',
                   fit: BoxFit.cover,
                 )),
-            const Text('Zväčšovať si ho',
+            const Text('Zväčšovať si ich',
                 style: const TextStyle(color: Colors.white, fontSize: 20)),
             Container(
                 //logo školy
@@ -38,7 +38,7 @@ class TerritoryTutorial extends StatelessWidget {
                   'assets/images/extend.gif',
                   fit: BoxFit.cover,
                 )),
-            const Text('A zaberať ho ostatným',
+            const Text('A preberať územia ostatným',
                 style: const TextStyle(color: Colors.white, fontSize: 20)),
             Container(
                 //logo školy

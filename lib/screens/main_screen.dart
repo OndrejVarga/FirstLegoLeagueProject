@@ -1,4 +1,4 @@
-import 'package:FLL/providers/data_fetcher.dart';
+import '../providers/data_fetcher.dart';
 import 'package:provider/provider.dart';
 
 import '../screens/auth_screen.dart';
@@ -12,17 +12,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  bool _isInnit = false;
-
-  // @override
-  // void didChangeDependencies() async {
-  //   if (!_isInnit) {
-  //     await Provider.of<DataFetcher>(context, listen: false).fetchInitData();
-  //     _isInnit = false;
-  //   }
-  //   super.didChangeDependencies();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Center(

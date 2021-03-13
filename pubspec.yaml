@@ -1,4 +1,4 @@
-name: FLL
+name: fll
 description: Location IRL game.
 
 # The following line prevents the package from being accidentally published to
@@ -80,10 +80,11 @@ flutter:
     - assets/images/extend.gif
     - assets/images/take.gif
     - assets/images/nav.png
-    - assets/images/pause.png
-    - assets/images/set.png
-    - assets/images/set1.png
     - assets/images/start.png
+    - assets/images/data.png
+    - assets/images/tabulka.png
+    - assets/images/farba.png
+    - assets/images/mapa.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
