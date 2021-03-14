@@ -1,3 +1,6 @@
+import 'package:fll/providers/data_fetcher.dart';
+import 'package:provider/provider.dart';
+
 import './buy_new_color_widget.dart';
 import './owned_colors_widgets.dart';
 import 'package:flutter/material.dart';

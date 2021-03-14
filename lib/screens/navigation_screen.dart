@@ -53,6 +53,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
           );
         } else {
           Provider.of<DataFetcher>(context, listen: false).updateUserData();
+          //Provider.of<DataFetcher>(context, listen: false).fetchUserInfo();
           Provider.of<Core>(context, listen: false).changePage(index);
         }
       },

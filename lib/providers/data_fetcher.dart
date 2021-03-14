@@ -65,6 +65,12 @@ class DataFetcher with ChangeNotifier {
     return true;
   }
 
+  Future<bool> fetchShopData()async{
+     await fetchUserInfo();
+    await fetchTableData();
+    return true;
+  }
+
 //Getting user information
   Future<void> fetchUserInfo() async {
     _currUserInformation.clear();
@@ -89,6 +95,7 @@ class DataFetcher with ChangeNotifier {
       'index': 0
     });
     notifyListeners();
+    return true;
   }
 
   Future<void> fetchSettings() async {
@@ -134,6 +141,7 @@ class DataFetcher with ChangeNotifier {
       }
     }
     notifyListeners();
+    return true;
   }
 
   void updateUserData() {
@@ -168,7 +176,7 @@ class DataFetcher with ChangeNotifier {
 
   void buyColor(Color color) {
     if (!_currUserInformation['ownedColors'].contains(color.value)) {
-      currUserInformation['points'] = currUserInformation['points'] - 1000;
+      currUserInformation['points'] = currUserInformation['points'] - 100000;
       currUserInformation['ownedColors'].add(color.value);
 
       FirebaseFirestore.instance

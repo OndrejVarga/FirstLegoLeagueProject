@@ -12,15 +12,15 @@ class UserInfo extends StatelessWidget {
     infos.add(UserInfoWidget('Meno', userData['username']));
     infos.add(UserInfoWidget('Poradie', (userData['index']+1).toString()));
     infos.add(UserInfoWidget('Obsah zabratého územia',
-       '${userData['currAreaOfTerritory'].toInt().toString()} m²'));
+       '${userData["currAreaOfTerritory"].toInt().toString()} m²'));
     infos.add(UserInfoWidget('Vzdialenosť','${userData['length'].toInt().toString()} m'));
     infos.add(UserInfoWidget('Počet bodov', userData['points'].toString()));
     infos.add(UserInfoWidget('Hmotnosť', '${userData['weight']} kg'.toString()));
-     infos.add(UserInfoWidget('Spálené kalórie', '${userData['calories'].toInt().toString()} kcal'.toString()));
+     infos.add(UserInfoWidget('Spálené kalórie', '${userData["calories"].toInt().toString()} kcal'));
 
     return Scaffold(
        appBar: AppBar(
-        title:const Text('Fll App'),
+        title:const Text('Junior App'),
       ),
         backgroundColor: Theme.of(context).primaryColor,
           body: Center(

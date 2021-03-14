@@ -49,7 +49,7 @@ class _MapWidgetState extends State<MapWidget> {
 
     subscription = g.Geolocation.locationUpdates(
       accuracy: g.LocationAccuracy.best,
-      displacementFilter: 5.0,
+      displacementFilter: 0,
       inBackground: true,
     ).listen(
       (result) {

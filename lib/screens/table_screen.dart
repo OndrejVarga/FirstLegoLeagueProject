@@ -9,21 +9,26 @@ class TableScreen extends StatefulWidget {
 }
 
 class _TableScreenState extends State<TableScreen> {
-  bool init = false;
-  @override
-  void didChangeDependencies() async {
-    if (!init) {
-      init = true;
-      await Provider.of<DataFetcher>(context,listen: false).fetchTableData();
-    }
-    super.didChangeDependencies();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: SingleChildScrollView(child: TableWidget()),
+      body: SingleChildScrollView(
+        child: FutureBuilder(
+          future: Provider.of<DataFetcher>(context,listen: false).fetchTableData(),
+          builder: (ctx, snap) {
+            if (snap.hasData) {
+              return TableWidget();
+            }else{
+              return Container(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+          },
+        ),
+      ),
     );
   }
 }

@@ -8,7 +8,7 @@ class DataKtoreViem extends StatelessWidget {
       child: Column(
         children: [
           Center(
-            child: const Text('Pre milovníkov dát',
+            child: const Text('Pre milovníkov údajov',
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 32,

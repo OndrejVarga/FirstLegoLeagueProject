@@ -60,7 +60,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     await FlutterForegroundServicePlugin.startForegroundService(
       notificationContent: NotificationContent(
         iconName: 'ic_stat_add_location',
-        titleText: 'FLL Aplikácia beží na pozadí',
+        titleText: 'Aplikácia beží na pozadí',
         color: Colors.green,
         priority: NotificationPriority.high,
       ),
@@ -81,7 +81,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         ChangeNotifierProvider.value(value: Core())
       ],
       child: MaterialApp(
-        title: 'FLL App',
+        title: 'Junior App',
         theme: ThemeData(
           primaryColor: HexColor('#000a12'),
           accentColor: HexColor('#263238'),
