@@ -35,28 +35,39 @@ class _TutorialTutorialState extends State<TutorialTutorial> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               tutorial[currIndex],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.all(30),
+                    child: TextButton(
+                      onPressed: () {
+                        setState(() {
+                          if (currIndex + 1 == tutorial.length) {
+                            FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(FirebaseAuth.instance.currentUser.uid)
+                                .update({'tutorial': true});
+
+                            Navigator.of(context).pop();
+                          } else {
+                            currIndex++;
+                          }
+                        });
+                      },
+                      child: Text(
+                        'Pokračovať',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline2
+                            .copyWith(fontSize: 15),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
-        ),
-      ),
-      floatingActionButton: TextButton(
-        onPressed: () {
-          setState(() {
-            if (currIndex + 1 == tutorial.length) {
-              FirebaseFirestore.instance
-                  .collection('users')
-                  .doc(FirebaseAuth.instance.currentUser.uid)
-                  .update({'tutorial': true});
-
-              Navigator.of(context).pop();
-            } else {
-              currIndex++;
-            }
-          });
-        },
-        child: Text(
-          'Pokračovať',
-          style: Theme.of(context).textTheme.headline2.copyWith(fontSize: 15),
         ),
       ),
     );

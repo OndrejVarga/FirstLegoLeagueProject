@@ -30,7 +30,7 @@ class TableItem extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 1 / 5,
             child: Padding(
               padding: const EdgeInsets.all(20),
-              child: Text(('#${index.toString()}'),
+              child: Text(!ok ? '#${index.toString()}' : '  ',
                   style: !ok
                       ? Theme.of(context)
                           .textTheme

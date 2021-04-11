@@ -53,9 +53,11 @@ class DetailsTerritory extends StatelessWidget {
               ),
               //Content---------------------------------------------------------
               DetailPart('Obsah zabratého územia',
-                  data['routeArea'].toInt().toString()),
+                  data['routeArea'].toInt().toString() + ' m²'),
               DetailPart('Prejdená vzdialenosť',
-                  data['routeLength'].toInt().toString()),
+                  data['routeLength'].toInt().toString() + ' m'),
+              DetailPart('Priemerná rýchlosť',
+                  data['avgSpeed'].toInt().toString() + ' km/h'),
               DetailPart(
                 'Začiatok zaberania',
                 DateFormat.jm()
@@ -64,17 +66,20 @@ class DetailsTerritory extends StatelessWidget {
               DetailPart(
                   'Koniec zaberania',
                   DateFormat.jm()
-                      .format(DateTime.parse(data['startTime'].toString()))),
-              DetailPart('Trvanie', data['duration'].toString()),
-              DetailPart(
-                  'Spálené kalórie ', data['calories'].toInt().toString()),
+                      .format(DateTime.parse(data['endTime'].toString()))),
+              DetailPart('Trvanie', data['duration']),
+              DetailPart('Spálené kalórie ',
+                  data['calories'].toInt().toString() + ' kcal'),
               GestureDetector(
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (ctx) =>
-                                MapTerritory(data['points'].toList())));
+                      context,
+                      MaterialPageRoute(
+                        builder: (ctx) => MapTerritory(
+                          data['points'].toList(),
+                        ),
+                      ),
+                    );
                   },
                   child: Container(
                     child: Row(

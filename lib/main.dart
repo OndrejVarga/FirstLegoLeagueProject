@@ -1,6 +1,5 @@
 import 'package:borderwander/pages/goodbye.dart';
 import 'package:borderwander/pages/tutorial_screens/tutorial.dart';
-
 import './pages/all_territory.dart';
 import './pages/character_page.dart';
 import './pages/character_shop_page.dart';
@@ -29,8 +28,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        //Dealing wiht data and comunication with cloud
         ChangeNotifierProvider.value(value: DataFetcher()),
+        //main backend functionality
         ChangeNotifierProvider.value(value: Core()),
+        //character images setup
         ChangeNotifierProvider.value(value: ImageController())
       ],
       child: MaterialApp(

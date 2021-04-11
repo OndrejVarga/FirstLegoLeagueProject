@@ -44,8 +44,8 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
       setState(() {
         print('SPEED' + _speed.toString());
         Provider.of<Core>(context, listen: false)
-            .changeSpeed((dto.speed * 3.6).toInt());
-        _speed = (dto.speed * 3.6).toInt();
+            .changeSpeed((dto.speed * 1.609344).toInt());
+        _speed = (dto.speed * 1.609344).toInt();
       });
     }
 
@@ -53,6 +53,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
       if (lastLocation.latitude != dto.latitude ||
           lastLocation.longitude != dto.longitude) {
         if (Provider.of<Core>(context, listen: false).automatickeSledovanie) {
+          print('moving');
           _controller.move(LatLng(dto.latitude, dto.longitude), 18);
         }
 
@@ -117,6 +118,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
             Navigator.of(context).pushNamed(TutorialTutorial.routeName);
           }
         }
+        _init = true;
       },
     );
 
@@ -127,6 +129,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
         LatLng(_userLocation[0].latitude, _userLocation[0].longitude),
         18,
       );
+      Provider.of<Core>(context, listen: false).changeCurrLocToFalse();
       super.didChangeDependencies();
     }
   }
@@ -209,13 +212,13 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                     child: IconButton(
                       icon: const Icon(Icons.stop),
                       onPressed: () {
+                        Navigator.pop(context);
                         if (!Provider.of<Core>(context, listen: false)
                             .isTakingLand) {
                           _points.clear();
                         }
                         Provider.of<Core>(context, listen: false)
                             .startStopTakingLand(_points, this.context);
-                        Navigator.pop(context);
                       },
                       iconSize: 30,
                       color: Colors.white,

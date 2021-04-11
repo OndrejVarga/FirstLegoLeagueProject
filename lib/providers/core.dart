@@ -5,6 +5,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:maps_toolkit/maps_toolkit.dart' as mt;
 import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Core with ChangeNotifier {
@@ -37,17 +38,18 @@ class Core with ChangeNotifier {
       _endTime = DateTime.now();
       List<LatLng> _routePoints = points;
 
-      var avgSpeed = (mt.SphericalUtil.computeLength(_routePoints
-              .map((e) => mt.LatLng(e.latitude, e.longitude))
-              .toList()) /
-          _endTime.difference(_startTime).inSeconds);
+      var avgSpeed = ((mt.SphericalUtil.computeLength(_routePoints
+                  .map((e) => mt.LatLng(e.latitude, e.longitude))
+                  .toList()) /
+              _endTime.difference(_startTime).inSeconds) *
+          3.6);
       print('AVG SPEED' + avgSpeed.toString());
 
       if (avgSpeed > 0 &&
           avgSpeed.round() >
               Provider.of<DataFetcher>(context, listen: false)
                   .settings['maxSpeed'])
-        _showSpeedDialog(context);
+        await _showSpeedDialog(context);
       else {
         List<LatLng> newTerritory =
             TerritoryManagment.validateNewTerritory(_routePoints);
@@ -68,6 +70,7 @@ class Core with ChangeNotifier {
               _endTime,
               0,
               _initialSteps,
+              avgSpeed,
               context);
 
           DataSender.sendToData(properties);
@@ -96,8 +99,21 @@ class Core with ChangeNotifier {
     notifyListeners();
   }
 
-  void changeWhiteMap() {
+  void setWhiteMap(bool whiteMap) {
+    _whiteMap = whiteMap;
+    notifyListeners();
+  }
+
+  void changeWhiteMap(BuildContext context) {
     _whiteMap = !_whiteMap;
+
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(Provider.of<DataFetcher>(context, listen: false)
+            .currUserInformation['UID'])
+        .update({
+      'whiteMap': _whiteMap,
+    });
     notifyListeners();
   }
 
@@ -111,6 +127,10 @@ class Core with ChangeNotifier {
     notifyListeners();
   }
 
+  void changeCurrLocToFalse() {
+    _toCurrLoc = false;
+  }
+
   Map<String, dynamic> _routeProperties(
       List<LatLng> routePoints,
       List<Polygon> userPolygons,
@@ -118,24 +138,26 @@ class Core with ChangeNotifier {
       DateTime endTime,
       int steps,
       int initialSteps,
+      double avgSpeed,
       BuildContext context) {
     var areaProperties =
         TerritoryManagment.getNewTotalAreaLength(userPolygons, routePoints);
+    DateTime a = endTime.subtract(Duration(
+        hours: startTime.hour,
+        minutes: startTime.minute,
+        seconds: startTime.second));
     return {
       'UID': Provider.of<DataFetcher>(context, listen: false)
           .currUserInformation['UID'],
       'timeOfEntryCreation': DateTime.now().toIso8601String(),
       'length': mt.SphericalUtil.computeLength(
           routePoints.map((e) => mt.LatLng(e.latitude, e.longitude)).toList()),
-      'avgSpeed': (mt.SphericalUtil.computeLength(routePoints
-              .map((e) => mt.LatLng(e.latitude, e.longitude))
-              .toList()) /
-          _endTime.difference(_startTime).inSeconds),
+      'avgSpeed': avgSpeed.toInt(),
       'routeArea': areaProperties['routeArea'],
       'routeLength': areaProperties['routeLength'],
       'startTime': startTime.toIso8601String(),
       'endTime': endTime.toIso8601String(),
-      'duration': endTime.difference(startTime).toString(),
+      'duration': '${a.hour}:${a.minute}:${a.second}',
       'steps': steps - initialSteps,
       'taken_territory': _convertRouteToList(routePoints),
       'calories':
@@ -178,7 +200,7 @@ class Core with ChangeNotifier {
     return routePoints;
   }
 
-  void _showSpeedDialog(BuildContext context) {
+  Future<void> _showSpeedDialog(BuildContext context) async {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
@@ -190,6 +212,7 @@ class Core with ChangeNotifier {
             child: const Text('Ok'),
             onPressed: () {
               Navigator.of(context).pop();
+              return true;
             },
           )
         ],

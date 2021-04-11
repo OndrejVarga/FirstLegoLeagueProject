@@ -58,15 +58,17 @@ class DetailData extends StatelessWidget {
                     DetailPart(
                         'Obsah zabratého územia',
                         Provider.of<DataFetcher>(context, listen: false)
-                            .currUserInformation['currAreaOfTerritory']
-                            .toInt()
-                            .toString()),
+                                .currUserInformation['currAreaOfTerritory']
+                                .toInt()
+                                .toString() +
+                            ' m²'),
                     DetailPart(
                         'Prejdená vzdialenosť',
                         Provider.of<DataFetcher>(context, listen: false)
-                            .currUserInformation['length']
-                            .toInt()
-                            .toString()),
+                                .currUserInformation['length']
+                                .toInt()
+                                .toString() +
+                            ' m'),
                     DetailPart(
                         'Počet bodov',
                         Provider.of<DataFetcher>(context, listen: false)
@@ -76,11 +78,12 @@ class DetailData extends StatelessWidget {
                     DetailPart(
                         'Spálené kalórie',
                         Provider.of<DataFetcher>(context, listen: false)
-                            .currUserInformation['calories']
-                            .toInt()
-                            .toString()),
+                                .currUserInformation['calories']
+                                .toInt()
+                                .toString() +
+                            ' kcal'),
                     DetailPart(
-                        'Zaberanie územia bez prestávky',
+                        'Zaberanie územia bez prestávky (v dňoch)',
                         Provider.of<DataFetcher>(context, listen: false)
                             .streak
                             .toString()),

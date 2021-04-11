@@ -74,6 +74,7 @@ class _AuthPageState extends State<AuthPage> {
           'totalSteps': 0,
           'weight': weight,
           'calories': 0,
+          'whiteMap': false,
           'character':
               Provider.of<ImageController>(context, listen: false).toDatabase
         });

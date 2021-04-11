@@ -18,8 +18,7 @@ class DataKtoreViem extends StatelessWidget {
                       .copyWith(fontSize: 30),
                   textAlign: TextAlign.start),
               const SizedBox(height: 20, width: 20),
-              Text(
-                  'Pri hraní, si taktiež môžete prezrieť dáta o vašom pokroku.',
+              Text('Pri hraní si taktiež môžete pozrieť dáta o vašom pokroku.',
                   style: Theme.of(context)
                       .textTheme
                       .headline3

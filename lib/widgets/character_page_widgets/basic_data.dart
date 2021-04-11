@@ -47,7 +47,7 @@ class BasicData extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'Pre Viac dát',
+                  'Pre viac dát',
                   style: Theme.of(context)
                       .textTheme
                       .headline1

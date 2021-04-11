@@ -63,13 +63,13 @@ class _MapDrawerState extends State<MapDrawer> {
                         //Settings--------------------------------------------------
                         //Len Svoje uzemia------------------------------------------
                         Container(
-                          margin: const EdgeInsets.only(top: 15),
+                          margin: const EdgeInsets.only(top: 10, left: 5),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Flexible(
                                 child: Text(
-                                  'Len svoje územie',
+                                  'Len svoje územia',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline1
@@ -94,7 +94,7 @@ class _MapDrawerState extends State<MapDrawer> {
 
                         //Automatické sledovanie------------------------------------
                         Container(
-                          margin: const EdgeInsets.only(top: 15),
+                          margin: const EdgeInsets.only(top: 10, left: 5),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -121,7 +121,7 @@ class _MapDrawerState extends State<MapDrawer> {
                         ),
                         //-------------------------------------
                         Container(
-                          margin: const EdgeInsets.only(top: 15),
+                          margin: const EdgeInsets.only(top: 10, left: 5),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -139,7 +139,7 @@ class _MapDrawerState extends State<MapDrawer> {
                                   onChanged: (value) {
                                     setState(() {
                                       Provider.of<Core>(context, listen: false)
-                                          .changeWhiteMap();
+                                          .changeWhiteMap(context);
                                     });
                                   })
                             ],
@@ -148,12 +148,12 @@ class _MapDrawerState extends State<MapDrawer> {
 
                         //O Aplikácií-----------------------------------------------
                         Container(
-                          margin: const EdgeInsets.only(top: 15),
+                          margin: const EdgeInsets.only(top: 10),
                           child: TextButton(
                             child: Row(
                               children: [
                                 Text(
-                                  'O Aplikácií',
+                                  'O Aplikácii',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline1
@@ -170,7 +170,7 @@ class _MapDrawerState extends State<MapDrawer> {
 
                         //Bug report--------------------------------------------
                         Container(
-                          margin: const EdgeInsets.only(top: 15),
+                          margin: const EdgeInsets.only(top: 10),
                           child: TextButton(
                             child: Row(
                               children: [
@@ -194,7 +194,7 @@ class _MapDrawerState extends State<MapDrawer> {
 
                         //Odhlásenia------------------------------------------------
                         Container(
-                          margin: const EdgeInsets.only(top: 15),
+                          margin: const EdgeInsets.only(top: 10),
                           child: TextButton(
                             child: Row(
                               children: [
@@ -216,7 +216,7 @@ class _MapDrawerState extends State<MapDrawer> {
 
                         //Odísť-----------------------------------------------------
                         Container(
-                          margin: const EdgeInsets.only(top: 15),
+                          margin: const EdgeInsets.only(top: 10),
                           child: Row(
                             children: [
                               TextButton(
@@ -249,7 +249,7 @@ class _MapDrawerState extends State<MapDrawer> {
                       children: [
                         Image.asset(
                           'assets/images/Logo1.png',
-                          height: 70,
+                          height: 40,
                         )
                       ],
                     )

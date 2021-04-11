@@ -1,3 +1,4 @@
+import 'package:borderwander/providers/core.dart';
 import 'package:borderwander/providers/image_controller.dart';
 import 'package:borderwander/utils/data_sender.dart';
 import 'package:borderwander/utils/error_alert.dart';
@@ -71,6 +72,10 @@ class DataFetcher with ChangeNotifier {
     await fetchTableData();
     await fetchColorOfOtherUser();
     await fetchSettings();
+    print("OK");
+    Provider.of<Core>(context, listen: false)
+        .setWhiteMap(_currUserInformation['whiteMap']);
+    print("OKERINO");
     return true;
   }
 
@@ -108,6 +113,7 @@ class DataFetcher with ChangeNotifier {
       _currUserInformation.clear();
       _currUserInformation.addAll({
         'UID': userData.id,
+        'whiteMap': userData['whiteMap'],
         'color': userData['color'],
         'currAreaOfTerritory': userData['currAreaOfTerritory'],
         'length': userData['length'],
@@ -181,7 +187,10 @@ class DataFetcher with ChangeNotifier {
   }
 
   Future<void> fetchAllTerritoriesData(BuildContext context) async {
-    _allUserTerritories.clear();
+    if (_allUserTerritories.length > 0) {
+      _allUserTerritories.clear();
+    }
+
     print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 
     var data = await FirebaseFirestore.instance
@@ -206,26 +215,21 @@ class DataFetcher with ChangeNotifier {
     _streak = calculateStreak();
     print(_streak);
     // _streak = 30;
-    print(_currUserInformation['username'][0].codeUnitAt(0));
     if (_streak >= 30 &&
         _currUserInformation['username'][0].codeUnitAt(0) != 55357) {
       setCrown(true);
       ErrorAlert.showError(context,
           'Získali sme korunu za mesiac nepretržitého zaberania územia',
           title: 'Gratulujeme');
-    } else if (_streak < 30 &&
-        _currUserInformation['username'][0].codeUnitAt(0) == 55357) {
-      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-      setCrown(false);
-      ErrorAlert.showError(context, 'Stratili ste korunu, získajte ju naspäť',
-          title: 'UUF');
     }
-
     print(_allUserTerritories);
     return true;
   }
 
   int calculateStreak() {
+    if (_allUserTerritories == null || _allUserTerritories.length == 0) {
+      return 0;
+    }
     List<DateTime> datesOfTerritories = [];
     for (int i = 0; i < _allUserTerritories.length; i++) {
       datesOfTerritories
@@ -276,10 +280,11 @@ class DataFetcher with ChangeNotifier {
     if (add) {
       _currUserInformation['username'] =
           '👑' + _currUserInformation['username'];
-    } else {
-      _currUserInformation['username'] =
-          _currUserInformation['username'].substring(2);
     }
+    // } else {
+    //   _currUserInformation['username'] =
+    //       _currUserInformation['username'].substring(2);
+    // }
 
     await FirebaseFirestore.instance
         .collection('users')

@@ -23,9 +23,9 @@ class TerritoryTutorial extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'Získavanie zahájite stlačnením tlačidla v strede navigácie \n' +
-                    'Opätovným stlačením tlačidla sa zabraté územie priradí vám. \n' +
-                    'Je dôležité aby zariadenie v čase ukončenia zaberania územia malo prístup na internet.',
+                'Územie začnete zaberať stlačením tlačidla s ikonou play.\n' +
+                    'Opätovným stlačením zaberanie ukončíte. \n' +
+                    'Je dôležité, aby zariadenie v čase ukončenia zaberania územia malo prístup na internet.',
                 style: Theme.of(context)
                     .textTheme
                     .headline3
@@ -37,8 +37,8 @@ class TerritoryTutorial extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                   child: Image.asset('assets/images/startStop.gif')),
               Text(
-                ' Pri zaberaní územia je dôležité aby ste svojou trasou pretli už prejdenú časť trasy, tak ako je zobrazené na obrázku nižšie.' +
-                    ' Územia môžete kradnúť aj ostatným hráčom, za čo získavate bonusy. Ak chcete zistiť komu územie patrí, stačí na ňho kliknúť',
+                'Na priradenie územia sa musia čiary pretnúť.\n' +
+                    'Územia môžete kradnúť aj ostatným hráčom, za čo získavate viac bodov. Ak chcete zistiť, komu územie patrí, stačí naň kliknúť.',
                 style: Theme.of(context)
                     .textTheme
                     .headline3
@@ -49,14 +49,9 @@ class TerritoryTutorial extends StatelessWidget {
                   margin:
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                   child: Image.asset('assets/images/territory.gif')),
-              Text(
-                ' Ak chcete zistiť komu územie patrí, stačí na ňho kliknúť',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline3
-                    .copyWith(fontSize: 20),
-                textAlign: TextAlign.start,
-              ),
+              SizedBox(
+                height: 100,
+              )
             ],
           ),
         ),
