@@ -313,7 +313,9 @@ class _AuthFormState extends State<AuthForm> {
                       _password = value;
                     },
                     (value) {
-                      if (value.isEmpty) {
+                      if (value.isEmpty ||
+                          value.toString().length < 6 ||
+                          value.toString().length > 12) {
                         return 'Heslo musí mať 6 až 12 znakov';
                       }
                       return null;
@@ -351,7 +353,7 @@ class _AuthFormState extends State<AuthForm> {
                             onPressed: () => _getWeight(context),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
-                                  vertical: 20, horizontal: 25),
+                                  vertical: 30, horizontal: 28),
                               child: Text(
                                 'Váha',
                                 style: Theme.of(context)
@@ -377,7 +379,7 @@ class _AuthFormState extends State<AuthForm> {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 20, horizontal: 25),
                               child: Text(
-                                'Farba',
+                                ' Farba\núzemia',
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline3

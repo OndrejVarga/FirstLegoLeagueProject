@@ -23,7 +23,7 @@ class Body extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                  'Za každé získané územie získavate body, za ktoré si môžete nakupovať farby vašich území. Množstvo bodov získaných za územie sa rovná obsahu získaného územia.',
+                  'Za každé získané územie získavate body, za ktoré si môžete nakupovať farby vašich území. Množstvo bodov získaných za územie sa rovná obsahu plochy zabratého územia.',
                   style: Theme.of(context)
                       .textTheme
                       .headline3
@@ -35,7 +35,8 @@ class Body extends StatelessWidget {
                   child: Image.asset(
                     'assets/images/shop.gif',
                   )),
-              Text('Váš počet bodov je porovnávaný s ostatnými užívateľmi',
+              Text(
+                  'Váš počet bodov je porovnávaný s bodmi ostatných užívateľov.',
                   style: Theme.of(context)
                       .textTheme
                       .headline3

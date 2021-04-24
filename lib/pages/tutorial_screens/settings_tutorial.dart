@@ -39,7 +39,7 @@ class Nastavenia extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(top: 25),
                       child: Text(
-                        'Ak sa vám podarí získavať územie pravidelne každý deň po dobu aspoň 30 dní, získate pred svoje meno korunku.',
+                        'Ak sa vám podarí získavať územie pravidelne každý deň počas aspoň 30 dní, získate pred svoje meno korunku.',
                         style: Theme.of(context)
                             .textTheme
                             .headline3

@@ -27,7 +27,7 @@ class TableItem extends StatelessWidget {
         children: [
           Container(
             //Standings with others(Position)-----------------------------------
-            width: MediaQuery.of(context).size.width * 1 / 5,
+            width: MediaQuery.of(context).size.width * 1.2 / 5,
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Text(!ok ? '#${index.toString()}' : '  ',

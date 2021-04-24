@@ -85,12 +85,7 @@ class _AuthPageState extends State<AuthPage> {
         message = err.message;
       }
       print(message);
-      ErrorAlert.showError(_scaffoldKey.currentContext,
-          'Nastala chyba skontrolujte si svoje údaje');
-      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      //   content: Text(message),
-      // ));
-      //
+      ErrorAlert.showError(_scaffoldKey.currentContext, message);
       setState(() {
         _isLoading = false;
       });
@@ -110,5 +105,13 @@ class _AuthPageState extends State<AuthPage> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+    print('dispose');
+    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+    super.dispose();
   }
 }

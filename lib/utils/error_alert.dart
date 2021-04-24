@@ -5,31 +5,32 @@ import 'package:provider/provider.dart';
 class ErrorAlert {
   static void showError(BuildContext context, String text,
       {String title = ''}) {
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        backgroundColor: Theme.of(context).backgroundColor,
-        title: Text(
-          title == '' ? 'Pozor' : title,
-          style: Theme.of(context).textTheme.headline1.copyWith(fontSize: 20),
+    if (context != null)
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          backgroundColor: Theme.of(context).backgroundColor,
+          title: Text(
+            title == '' ? 'Pozor' : title,
+            style: Theme.of(context).textTheme.headline1.copyWith(fontSize: 20),
+          ),
+          content: Text(text,
+              style:
+                  Theme.of(context).textTheme.headline2.copyWith(fontSize: 20)),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Ok',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline1
+                      .copyWith(fontSize: 20)),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
+          ],
         ),
-        content: Text(text,
-            style:
-                Theme.of(context).textTheme.headline2.copyWith(fontSize: 20)),
-        actions: <Widget>[
-          TextButton(
-            child: Text('Ok',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline1
-                    .copyWith(fontSize: 20)),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          )
-        ],
-      ),
-    );
+      );
   }
 
   static void showBugReport(BuildContext context) {
@@ -79,7 +80,7 @@ class ErrorAlert {
             onPressed: () {
               if (bug != '' && bug.length > 0) {
                 Provider.of<DataFetcher>(context, listen: false).sendBug(bug);
-                Provider.of<DataFetcher>(context, listen: false).addPoints();
+                // Provider.of<DataFetcher>(context, listen: false).addPoints();
                 Navigator.of(context).pop();
               }
             },
@@ -87,9 +88,11 @@ class ErrorAlert {
         ],
       ),
     ).then((value) {
-      if (bug != '' && bug.length > 0)
+      if (bug != '' && bug.length > 0) {
         showError(context, 'Za vašu pomoc získavate 500 bodov',
             title: 'Ďakujeme');
+        Provider.of<DataFetcher>(context, listen: false).addPoints();
+      }
     });
   }
 }
