@@ -86,9 +86,11 @@ class _AuthPageState extends State<AuthPage> {
       }
       print(message);
       ErrorAlert.showError(_scaffoldKey.currentContext, message);
-      setState(() {
-        _isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
   }
 
@@ -109,9 +111,6 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   void dispose() {
-    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-    print('dispose');
-    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
     super.dispose();
   }
 }

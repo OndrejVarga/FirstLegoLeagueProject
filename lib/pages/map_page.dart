@@ -44,8 +44,8 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
       setState(() {
         print('SPEED' + _speed.toString());
         Provider.of<Core>(context, listen: false)
-            .changeSpeed((dto.speed * 1.609344).toInt());
-        _speed = (dto.speed * 1.609344).toInt();
+            .changeSpeed((dto.speed * 3.6).toInt());
+        _speed = (dto.speed * 3.6).toInt();
       });
     }
 
@@ -75,7 +75,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
   @override
   //Setting the location manager for listening on position
   void initState() {
-    locationManager.interval = 5;
+    locationManager.interval = 3;
     locationManager.distanceFilter = 0;
     locationManager.notificationTitle = 'BorderWander';
     locationManager.notificationMsg =
