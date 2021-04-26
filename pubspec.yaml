@@ -32,9 +32,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  provider: ^5.0.0
-  firebase_core: ^1.0.2
-  firebase_auth: ^1.0.1
+  provider: ^5.0.0 
+  firebase_core: ^1.0.2 
+  firebase_auth: ^1.0.1 
   cloud_firestore: ^1.0.3
   hexcolor: ^2.0.3
   flutter_colorpicker: ^0.3.4
@@ -51,7 +51,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
+  plugin:
+    platforms:
+      ios:
+        pluginClass: AppDelegate
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -91,7 +94,7 @@ flutter:
       - asset: assets/fonts/Montserrat-Regular.ttf
         weight: 400
 
-    
+      
           
   # fonts:
   #   - family: Schyler
