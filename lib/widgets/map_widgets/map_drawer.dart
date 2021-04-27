@@ -1,3 +1,4 @@
+import 'package:borderwander/pages/auth_page.dart';
 import 'package:borderwander/pages/goodbye.dart';
 import 'package:borderwander/pages/tutorial_screens/tutorial.dart';
 import 'package:borderwander/providers/core.dart';
@@ -210,6 +211,10 @@ class _MapDrawerState extends State<MapDrawer> {
                             onPressed: () async {
                               await widget.stop();
                               FirebaseAuth.instance.signOut();
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (ctx) => AuthPage()));
                             },
                           ),
                         ),

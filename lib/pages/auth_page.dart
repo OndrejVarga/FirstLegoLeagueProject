@@ -1,3 +1,5 @@
+import 'package:borderwander/pages/map_page.dart';
+import 'package:borderwander/providers/data_fetcher.dart';
 import 'package:borderwander/utils/error_alert.dart';
 
 import '../providers/image_controller.dart';
@@ -37,16 +39,6 @@ class _AuthPageState extends State<AuthPage> {
       _isLoading = true;
     });
     await Provider.of<ImageController>(context, listen: false).init(context);
-    print('still of');
-    print(username);
-    print(email);
-    print(color.value);
-    print(0);
-    print(0);
-    print([color.value]);
-    print(weight);
-    print(Provider.of<ImageController>(context, listen: false).toDatabase);
-
     try {
       //Login in
       if (isLogIn) {
@@ -57,8 +49,12 @@ class _AuthPageState extends State<AuthPage> {
       else {
         //Loading images to save a new character
         //Creating User profile in cloud
+
         authResult = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
+        if (weight == null) {
+          weight = 80;
+        }
         await FirebaseFirestore.instance
             .collection('users')
             .doc(authResult.user.uid)
@@ -75,22 +71,34 @@ class _AuthPageState extends State<AuthPage> {
           'weight': weight,
           'calories': 0,
           'whiteMap': false,
-          'character':
-              Provider.of<ImageController>(context, listen: false).toDatabase
+          'character': [
+            ...Provider.of<ImageController>(context, listen: false).toDatabase
+          ]
         });
       }
     } catch (err) {
-      var message = 'Nastala chyba skontrolujte si svoje údaje';
-      if (err.message != null) {
-        message = err.message;
-      }
-      print(message);
-      ErrorAlert.showError(_scaffoldKey.currentContext, message);
+      print('-----------------------------------------------------------');
+      print(err);
+      print('-----------------------------------------------------------');
       if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
+        var message = 'Nastala chyba skontrolujte si svoje údaje';
+        if (err.message != null) {
+          message = err.message;
+        }
+        print(message);
+        ErrorAlert.showError(_scaffoldKey.currentContext, message);
+        if (mounted) {
+          setState(() {
+            _isLoading = false;
+          });
+        }
       }
+    }
+
+    if (FirebaseAuth.instance.currentUser != null) {
+      await Provider.of<DataFetcher>(context, listen: false)
+          .fetchInitData(context);
+      Navigator.push(context, MaterialPageRoute(builder: (ctx) => MapPage()));
     }
   }
 

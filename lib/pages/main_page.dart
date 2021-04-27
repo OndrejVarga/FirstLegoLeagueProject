@@ -44,32 +44,53 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (ctx, userShapshot) {
-          if (userShapshot.hasData) {
-            print(userShapshot.data);
-            return FutureBuilder(
-              future: Provider.of<DataFetcher>(context, listen: false)
-                  .fetchInitData(context),
-              builder: (ctx, data) {
-                if (_timer != null) _timer.cancel();
-                if (data.hasData) {
-                  return MapPage();
-                } else {
-                  startTimer();
-                  return Scaffold(
-                      backgroundColor: Theme.of(context).backgroundColor,
-                      body: Center(child: CircularProgressIndicator()));
-                }
-              },
-            );
+    if (FirebaseAuth.instance.currentUser != null) {
+      return FutureBuilder(
+        future: Provider.of<DataFetcher>(context, listen: false)
+            .fetchInitData(context),
+        builder: (ctx, data) {
+          if (_timer != null) _timer.cancel();
+          if (data.hasData) {
+            return MapPage();
           } else {
-            return AuthPage();
+            startTimer();
+            return Scaffold(
+                backgroundColor: Theme.of(context).backgroundColor,
+                body: Center(child: CircularProgressIndicator()));
           }
         },
-      ),
-    );
+      );
+    }
+    return AuthPage();
   }
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Container(
+  //     child: StreamBuilder(
+  //       stream: FirebaseAuth.instance.authStateChanges(),
+  //       builder: (ctx, userShapshot) {
+  //         if (userShapshot.hasData) {
+  //           print(userShapshot.data);
+  //           return FutureBuilder(
+  //             future: Provider.of<DataFetcher>(context, listen: false)
+  //                 .fetchInitData(context),
+  //             builder: (ctx, data) {
+  //               if (_timer != null) _timer.cancel();
+  //               if (data.hasData) {
+  //                 return MapPage();
+  //               } else {
+  //                 startTimer();
+  //                 return Scaffold(
+  //                     backgroundColor: Theme.of(context).backgroundColor,
+  //                     body: Center(child: CircularProgressIndicator()));
+  //               }
+  //             },
+  //           );
+  //         } else {
+  //           return AuthPage();
+  //         }
+  //       },
+  //     ),
+  //   );
+  // }
 }
