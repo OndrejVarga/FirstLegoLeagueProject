@@ -48,15 +48,15 @@ class _AuthFormState extends State<AuthForm> {
       _formKey.currentState.save();
       if (_weight == 0 && !_isLogIn) {
         //Show user the weight is missing
-        ErrorAlert.showError(context, 'Nezadal si hmotnosť');
+        ErrorAlert.showError(context, "You didn't enter the weight");
       } else if ((_password != _anotherPassword) && !_isLogIn) {
         //Show user the passwords are not the same
-        ErrorAlert.showError(context, 'Zadajte rovnaké heslo');
+        ErrorAlert.showError(context, 'Enter the same password');
       } else {
         //Try to register / login when data is ok
         _formKey.currentState.save();
-        widget.submitAuthForm(_email, _password, _anotherPassword, _username,
-            _currentColor, _isLogIn, context, _weight);
+        widget.submitAuthForm(_email.trim(), _password, _anotherPassword,
+            _username, _currentColor, _isLogIn, context, _weight);
       }
     }
   }
@@ -69,7 +69,7 @@ class _AuthFormState extends State<AuthForm> {
         return AlertDialog(
           backgroundColor: Theme.of(context).backgroundColor,
           title: Text(
-            'Príde Vám email s obnovou hesla',
+            'You will receive an email with password recovery',
             style: Theme.of(context).textTheme.headline1.copyWith(fontSize: 15),
           ),
           content: TextField(
@@ -85,7 +85,7 @@ class _AuthFormState extends State<AuthForm> {
           actions: <Widget>[
             TextButton(
               child: Text(
-                'Zrušiť',
+                'Cancel',
                 style: Theme.of(context)
                     .textTheme
                     .headline1
@@ -123,7 +123,7 @@ class _AuthFormState extends State<AuthForm> {
         return AlertDialog(
           backgroundColor: Theme.of(context).backgroundColor,
           title: Text(
-            'Vyber si farbu!',
+            'Choose a color!',
             style: Theme.of(context).textTheme.headline1.copyWith(fontSize: 15),
           ),
           content: SingleChildScrollView(
@@ -167,7 +167,7 @@ class _AuthFormState extends State<AuthForm> {
         return AlertDialog(
           backgroundColor: Theme.of(context).backgroundColor,
           title: Text(
-            'Zadajte svoju hmotnosť (kg)',
+            'Enter your weight (kg)',
             style: Theme.of(context).textTheme.headline1.copyWith(fontSize: 15),
           ),
           content: TextField(
@@ -178,13 +178,13 @@ class _AuthFormState extends State<AuthForm> {
             decoration: InputDecoration(
               labelStyle:
                   Theme.of(context).textTheme.headline3.copyWith(fontSize: 15),
-              labelText: 'Hmotnosť',
+              labelText: 'Weight',
             ),
           ),
           actions: <Widget>[
             TextButton(
               child: Text(
-                'Nechcem uviesť',
+                "I don't want to",
                 style: Theme.of(context)
                     .textTheme
                     .headline1
@@ -226,7 +226,7 @@ class _AuthFormState extends State<AuthForm> {
             Padding(
               padding: const EdgeInsets.only(left: 40, top: 20, right: 5),
               child: Text(
-                _isLogIn ? 'Prihlásenie' : 'Registrácia',
+                _isLogIn ? 'Log in' : 'Register',
                 style: Theme.of(context)
                     .textTheme
                     .headline1
@@ -246,7 +246,7 @@ class _AuthFormState extends State<AuthForm> {
               children: [
                 Flexible(
                   child: Text(
-                    'Pre pokračovanie sa ${_isLogIn ? 'prihláste' : 'zaregistrujte'}',
+                    'To continue ${_isLogIn ? 'log in' : 'register'}',
                     style: Theme.of(context)
                         .textTheme
                         .headline4
@@ -275,7 +275,7 @@ class _AuthFormState extends State<AuthForm> {
                     },
                     (value) {
                       if (value.isEmpty || !value.contains('@')) {
-                        return 'Prosím zadajte platný email';
+                        return 'Please enter a valid email';
                       }
                       return null;
                     },
@@ -284,7 +284,7 @@ class _AuthFormState extends State<AuthForm> {
                   //NameForm----------------------------------------------------
                   if (!_isLogIn)
                     TextFieldForm(
-                      'Meno',
+                      'Username',
                       Icons.accessibility,
                       TextInputType.text,
                       (String value) {
@@ -294,11 +294,11 @@ class _AuthFormState extends State<AuthForm> {
                         if (value.isEmpty ||
                             value.toString().length < 4 ||
                             value.toString().length > 10) {
-                          return 'Meno musí mať 4 až 10 znakov';
+                          return 'The username must be 4 to 10 characters';
                         } else if (!Provider.of<DataFetcher>(context,
                                 listen: false)
                             .checkValiability(value)) {
-                          return 'Toto meno je už zabraté';
+                          return 'This name is already taken';
                         }
                         return null;
                       },
@@ -306,7 +306,7 @@ class _AuthFormState extends State<AuthForm> {
 
                   //Password----------------------------------------------------
                   TextFieldForm(
-                    'Heslo',
+                    'Password',
                     Icons.lock_open_rounded,
                     TextInputType.text,
                     (String value) {
@@ -316,7 +316,7 @@ class _AuthFormState extends State<AuthForm> {
                       if (value.isEmpty ||
                           value.toString().length < 6 ||
                           value.toString().length > 12) {
-                        return 'Heslo musí mať 6 až 12 znakov';
+                        return 'The password must be 6 to 12 characters long';
                       }
                       return null;
                     },
@@ -325,12 +325,12 @@ class _AuthFormState extends State<AuthForm> {
 
                   //Another password--------------------------------------------
                   if (!_isLogIn)
-                    TextFieldForm('Heslo Znova', Icons.lock_open_rounded,
+                    TextFieldForm('Password Again', Icons.lock_open_rounded,
                         TextInputType.text, (String value) {
                       _anotherPassword = value;
                     }, (value) {
                       if (value.isEmpty) {
-                        return 'Prosím rovnaké zadajte heslo';
+                        return 'Please enter the same password';
                       }
                       return null;
                     }, obscureTxt: true),
@@ -355,7 +355,7 @@ class _AuthFormState extends State<AuthForm> {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 30, horizontal: 28),
                               child: Text(
-                                'Váha',
+                                'Weight',
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline3
@@ -379,7 +379,7 @@ class _AuthFormState extends State<AuthForm> {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 20, horizontal: 25),
                               child: Text(
-                                ' Farba\núzemia',
+                                'Color of\nterritory',
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline3
@@ -411,7 +411,7 @@ class _AuthFormState extends State<AuthForm> {
                                 backgroundColor: Colors.white,
                               )
                             : Text(
-                                _isLogIn ? 'Prihlásenie' : 'Registrácia',
+                                _isLogIn ? 'Log in' : 'Register',
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline1
@@ -432,7 +432,7 @@ class _AuthFormState extends State<AuthForm> {
                           _passwordChange(context);
                         },
                         child: Text(
-                          'Zabudol som Heslo',
+                          'I forgot my password',
                           style: Theme.of(context).textTheme.headline2.copyWith(
                                 fontSize: 12,
                               ),
@@ -447,7 +447,7 @@ class _AuthFormState extends State<AuthForm> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '${_isLogIn ? 'Nemáte' : 'Už máte'} účet? ',
+                          '${_isLogIn ? "Don't have an account yet" : 'Already registered'} ?',
                           style: Theme.of(context)
                               .textTheme
                               .headline3
@@ -460,7 +460,7 @@ class _AuthFormState extends State<AuthForm> {
                             });
                           },
                           child: Text(
-                            _isLogIn ? 'Zaregistrujte sa' : 'Prihláste sa',
+                            _isLogIn ? 'Register' : 'Log in',
                             style: Theme.of(context)
                                 .textTheme
                                 .headline1

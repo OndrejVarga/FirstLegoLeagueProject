@@ -46,7 +46,7 @@ class _AllTerritoryState extends State<AllTerritory> {
                     0
                 ? Center(
                     child: Text(
-                      'Nezabrali ste ani jedno územie',
+                      "You don't have territories",
                       style: Theme.of(context)
                           .textTheme
                           .headline3

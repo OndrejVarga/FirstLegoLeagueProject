@@ -44,7 +44,7 @@ class DetailsTerritory extends StatelessWidget {
               //Title-----------------------------------------------------------
               Container(
                 child: Text(
-                  'Dáta',
+                  'Data',
                   style: Theme.of(context)
                       .textTheme
                       .headline1
@@ -52,23 +52,23 @@ class DetailsTerritory extends StatelessWidget {
                 ),
               ),
               //Content---------------------------------------------------------
-              DetailPart('Obsah zabratého územia',
+              DetailPart('Area of the occupied territory',
                   data['routeArea'].toInt().toString() + ' m²'),
-              DetailPart('Prejdená vzdialenosť',
+              DetailPart('Traveled distance',
                   data['routeLength'].toInt().toString() + ' m'),
-              DetailPart('Priemerná rýchlosť',
+              DetailPart('Average speed',
                   data['avgSpeed'].toInt().toString() + ' km/h'),
               DetailPart(
-                'Začiatok zaberania',
+                'Start of walk',
                 DateFormat.jm()
                     .format(DateTime.parse(data['startTime'].toString())),
               ),
               DetailPart(
-                  'Koniec zaberania',
+                  'End of walk',
                   DateFormat.jm()
                       .format(DateTime.parse(data['endTime'].toString()))),
-              DetailPart('Trvanie', data['duration']),
-              DetailPart('Spálené kalórie ',
+              DetailPart('Duration', data['duration']),
+              DetailPart('Burned calories',
                   data['calories'].toInt().toString() + ' kcal'),
               GestureDetector(
                   onTap: () {
@@ -86,7 +86,7 @@ class DetailsTerritory extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Pozrieť na mape',
+                          'Show on the map',
                           style: Theme.of(context)
                               .textTheme
                               .headline3

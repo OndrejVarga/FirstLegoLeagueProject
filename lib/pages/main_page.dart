@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:borderwander/providers/core.dart';
 import 'package:borderwander/utils/error_alert.dart';
 
 import '../pages/auth_page.dart';
@@ -15,7 +16,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _start = 10;
+  int _start = 5;
   Timer _timer;
 
   void startTimer() {
@@ -30,7 +31,7 @@ class _MainPageState extends State<MainPage> {
             timer.cancel();
             auth.signOut();
             ErrorAlert.showError(context,
-                "Nastala chyba, ak bude pretrvávať vytvorte si nový účet");
+                "An error has occurred. If this error persist create a new account");
           });
         } else {
           setState(() {

@@ -37,7 +37,7 @@ class _MapDrawerState extends State<MapDrawer> {
 
                       //Title---------------------------------------------------
                       child: Text(
-                        'Nastavenia',
+                        'Settings',
                         style: Theme.of(context)
                             .textTheme
                             .headline2
@@ -70,7 +70,7 @@ class _MapDrawerState extends State<MapDrawer> {
                             children: [
                               Flexible(
                                 child: Text(
-                                  'Len svoje územia',
+                                  'Only your territory',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline1
@@ -101,7 +101,7 @@ class _MapDrawerState extends State<MapDrawer> {
                             children: [
                               Flexible(
                                 child: Text(
-                                  'Automatické sledovanie',
+                                  'Map movement',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline1
@@ -128,7 +128,7 @@ class _MapDrawerState extends State<MapDrawer> {
                             children: [
                               Flexible(
                                 child: Text(
-                                  'Biela mapa',
+                                  'Light theme',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline1
@@ -154,7 +154,7 @@ class _MapDrawerState extends State<MapDrawer> {
                             child: Row(
                               children: [
                                 Text(
-                                  'O Aplikácii',
+                                  'About',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline1
@@ -176,7 +176,7 @@ class _MapDrawerState extends State<MapDrawer> {
                             child: Row(
                               children: [
                                 Text(
-                                  'Nahláste chybu',
+                                  'Report a bug',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline1
@@ -200,7 +200,7 @@ class _MapDrawerState extends State<MapDrawer> {
                             child: Row(
                               children: [
                                 Text(
-                                  'Odhlásenie',
+                                  'Log out',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline1
@@ -226,7 +226,7 @@ class _MapDrawerState extends State<MapDrawer> {
                             children: [
                               TextButton(
                                 child: Text(
-                                  'Odísť',
+                                  'Exit',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline1

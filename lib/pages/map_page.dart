@@ -79,7 +79,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
     locationManager.distanceFilter = 0;
     locationManager.notificationTitle = 'BorderWander';
     locationManager.notificationMsg =
-        'Aplikácia stále beží na pozadí,ak chcete aplikáciu ukončiť, vypnite ju cez manu v aplikácií';
+        'The application is still running in the background, if you want to close the application, turn it off via the menu in the application';
     dtoStream = locationManager.dtoStream;
     super.initState();
   }
@@ -174,7 +174,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                         Container(
                           margin: const EdgeInsets.only(bottom: 20),
                           child: Text(
-                            'Zaberáte územie',
+                            'Start route',
                             style: Theme.of(context)
                                 .textTheme
                                 .headline1
@@ -184,7 +184,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                         Row(
                           children: [
                             Text(
-                              'Rýchlosť ',
+                              'Speed ',
                               style: Theme.of(context)
                                   .textTheme
                                   .headline3

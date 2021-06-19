@@ -11,7 +11,7 @@ class ErrorAlert {
         builder: (_) => AlertDialog(
           backgroundColor: Theme.of(context).backgroundColor,
           title: Text(
-            title == '' ? 'Pozor' : title,
+            title == '' ? 'Warning' : title,
             style: Theme.of(context).textTheme.headline1.copyWith(fontSize: 20),
           ),
           content: Text(text,
@@ -41,7 +41,7 @@ class ErrorAlert {
       builder: (_) => AlertDialog(
         backgroundColor: Theme.of(context).backgroundColor,
         title: Text(
-          'Prosím čo najpodrobnejšie opíšte chybu',
+          'Please describe the bug in as much detail as possible',
           style: Theme.of(context).textTheme.headline1.copyWith(fontSize: 20),
         ),
         content: Container(
@@ -65,14 +65,14 @@ class ErrorAlert {
                     .textTheme
                     .headline3
                     .copyWith(fontSize: 15),
-                labelText: 'Chyba',
+                labelText: 'Bug',
               ),
             ),
           ),
         ),
         actions: <Widget>[
           TextButton(
-            child: Text('Poslať',
+            child: Text('Send',
                 style: Theme.of(context)
                     .textTheme
                     .headline1
@@ -89,8 +89,7 @@ class ErrorAlert {
       ),
     ).then((value) {
       if (bug != '' && bug.length > 0) {
-        showError(context, 'Za vašu pomoc získavate 500 bodov',
-            title: 'Ďakujeme');
+        showError(context, 'You get 500 points', title: 'Thank you');
         Provider.of<DataFetcher>(context, listen: false).addPoints();
       }
     });

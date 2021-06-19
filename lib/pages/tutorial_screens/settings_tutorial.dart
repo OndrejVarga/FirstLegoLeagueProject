@@ -23,7 +23,7 @@ class Nastavenia extends StatelessWidget {
                       children: [
                         Flexible(
                           child: Text(
-                            "Posledné tipy!",
+                            "Final tips!",
                             style: Theme.of(context)
                                 .textTheme
                                 .headline1
@@ -39,7 +39,7 @@ class Nastavenia extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(top: 25),
                       child: Text(
-                        'Ak sa vám podarí získavať územie pravidelne každý deň počas aspoň 30 dní, získate pred svoje meno korunku.',
+                        'If you manage to occupy a new territory regularly every day for at least 30 days, you will receive a crown in front of your name.',
                         style: Theme.of(context)
                             .textTheme
                             .headline3
@@ -50,7 +50,7 @@ class Nastavenia extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(top: 25),
                       child: Text(
-                        'Pre odchod z aplikácie použite odkaz v nastaveniach.',
+                        'To leave the application, use the option in the settings',
                         style: Theme.of(context)
                             .textTheme
                             .headline3
@@ -61,7 +61,7 @@ class Nastavenia extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(top: 25),
                       child: Text(
-                        'Maximálna povolená rýchlosť je ${Provider.of<DataFetcher>(context, listen: false).settings['maxSpeed']} km/h.',
+                        'The maximum allowed average speed is ${Provider.of<DataFetcher>(context, listen: false).settings['maxSpeed']} km/h.',
                         style: Theme.of(context)
                             .textTheme
                             .headline3

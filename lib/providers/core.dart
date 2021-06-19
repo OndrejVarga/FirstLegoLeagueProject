@@ -200,13 +200,16 @@ class Core with ChangeNotifier {
     return routePoints;
   }
 
+//--------------------------------------------------------------------
+
+//--------------------------------------------------------------------
   Future<void> _showSpeedDialog(BuildContext context) async {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text("Pozor"),
+        title: const Text("Warning"),
         content: Text(
-            "Prekročil si maximálnu povolené rýchlosť(${Provider.of<DataFetcher>(context, listen: false).settings['maxSpeed']})!"),
+            "You have exceeded the maximum permitted speed(${Provider.of<DataFetcher>(context, listen: false).settings['maxSpeed']})!"),
         actions: <Widget>[
           TextButton(
             child: const Text('Ok'),

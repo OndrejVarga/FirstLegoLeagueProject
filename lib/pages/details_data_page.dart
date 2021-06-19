@@ -47,7 +47,7 @@ class DetailData extends StatelessWidget {
                     //Title-----------------------------------------------------------
                     Container(
                       child: Text(
-                        'Dáta',
+                        'Data',
                         style: Theme.of(context)
                             .textTheme
                             .headline1
@@ -56,34 +56,34 @@ class DetailData extends StatelessWidget {
                     ),
                     //Content---------------------------------------------------------
                     DetailPart(
-                        'Obsah zabratého územia',
+                        'Area of the occupied territory',
                         Provider.of<DataFetcher>(context, listen: false)
                                 .currUserInformation['currAreaOfTerritory']
                                 .toInt()
                                 .toString() +
                             ' m²'),
                     DetailPart(
-                        'Prejdená vzdialenosť',
+                        'Traveled distance',
                         Provider.of<DataFetcher>(context, listen: false)
                                 .currUserInformation['length']
                                 .toInt()
                                 .toString() +
                             ' m'),
                     DetailPart(
-                        'Počet bodov',
+                        'Amount of points',
                         Provider.of<DataFetcher>(context, listen: false)
                             .currUserInformation['points']
                             .toInt()
                             .toString()),
                     DetailPart(
-                        'Spálené kalórie',
+                        'Burned calories',
                         Provider.of<DataFetcher>(context, listen: false)
                                 .currUserInformation['calories']
                                 .toInt()
                                 .toString() +
                             ' kcal'),
                     DetailPart(
-                        'Zaberanie územia bez prestávky (v dňoch)',
+                        'Walking without a break (in days)',
                         Provider.of<DataFetcher>(context, listen: false)
                             .streak
                             .toString()),
@@ -96,7 +96,7 @@ class DetailData extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Všetky územia',
+                                'All territories',
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline3

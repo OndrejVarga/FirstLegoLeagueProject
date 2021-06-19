@@ -69,8 +69,11 @@ class DataFetcher with ChangeNotifier {
   Future<bool> fetchInitData(BuildContext context) async {
     print("FETCHING INNIT DATA");
     await fetchUserInfo();
+    print("FETCHING INNIT DATA");
     await fetchTableData();
+    print("FETCHING INNIT DATA");
     await fetchColorOfOtherUser();
+    print("FETCHING INNIT DATA");
     await fetchSettings();
     print("OK");
     Provider.of<Core>(context, listen: false)
@@ -169,8 +172,15 @@ class DataFetcher with ChangeNotifier {
         .collection('users')
         .orderBy('currAreaOfTerritory', descending: true)
         .get();
-
+    print(allData.docs.length);
     for (int i = 0; i < allData.docs.length; i++) {
+      print({
+        'UID': allData.docs[i].id,
+        'username': allData.docs[i].get('username'),
+        'currAreaOfTerritory':
+            allData.docs[i].get('currAreaOfTerritory').toInt().toString(),
+        'character': allData.docs[i].get('character').toList()
+      });
       _tableData.add({
         'UID': allData.docs[i].id,
         'username': allData.docs[i].get('username'),
@@ -218,9 +228,9 @@ class DataFetcher with ChangeNotifier {
     if (_streak >= 30 &&
         _currUserInformation['username'][0].codeUnitAt(0) != 55357) {
       setCrown(true);
-      ErrorAlert.showError(context,
-          'Získali sme korunu za mesiac nepretržitého zaberania územia',
-          title: 'Gratulujeme');
+      ErrorAlert.showError(
+          context, 'We received a crown for a month of continuous movement',
+          title: 'Congratulations');
     }
     print(_allUserTerritories);
     return true;

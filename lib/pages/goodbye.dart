@@ -29,7 +29,7 @@ class _GoodbyePageState extends State<GoodbyePage> {
             children: [
               AuthTop(),
               Center(
-                  child: Text('Dovidenia',
+                  child: Text('See you later!',
                       style: Theme.of(context)
                           .textTheme
                           .headline2

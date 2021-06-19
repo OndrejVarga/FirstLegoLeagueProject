@@ -93,7 +93,7 @@ class _CharacterShopState extends State<CharacterShop> {
                               padding: EdgeInsets.symmetric(
                                   vertical: 20, horizontal: 35),
                               child: Text(
-                                'Uložiť',
+                                'Save',
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline1

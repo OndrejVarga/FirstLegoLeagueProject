@@ -12,7 +12,7 @@ class Body extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Body ',
+                'Points ',
                 style: Theme.of(context)
                     .textTheme
                     .headline1
@@ -23,7 +23,7 @@ class Body extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                  'Za každé získané územie získavate body, za ktoré si môžete nakupovať farby vašich území. Množstvo bodov získaných za územie sa rovná obsahu plochy zabratého územia.',
+                  'For every territory you own, you earn points which you use to can buy new colors of your territories. The number of points obtained for the territory is equal to the the area of the occupied territory.',
                   style: Theme.of(context)
                       .textTheme
                       .headline3
@@ -35,8 +35,7 @@ class Body extends StatelessWidget {
                   child: Image.asset(
                     'assets/images/shop.gif',
                   )),
-              Text(
-                  'Váš počet bodov je porovnávaný s bodmi ostatných užívateľov.',
+              Text("Your points are compared to other users' points.",
                   style: Theme.of(context)
                       .textTheme
                       .headline3

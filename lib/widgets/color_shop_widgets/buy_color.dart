@@ -30,7 +30,7 @@ class _BuyColorState extends State<BuyColor> {
                 Container(
                   margin: EdgeInsets.only(bottom: 10),
                   child: Text(
-                    'Počet Bodov',
+                    'Amount of points',
                     style: Theme.of(context)
                         .textTheme
                         .headline1
@@ -49,7 +49,7 @@ class _BuyColorState extends State<BuyColor> {
                 Container(
                   margin: EdgeInsets.only(top: 20, bottom: 10),
                   child: Text(
-                    'Cena Farby',
+                    'Price of one color',
                     style: Theme.of(context)
                         .textTheme
                         .headline1
@@ -96,7 +96,7 @@ class _BuyColorState extends State<BuyColor> {
                               actions: <Widget>[
                                 TextButton(
                                   child: Text(
-                                    'Vyber',
+                                    'OK',
                                     style: Theme.of(context)
                                         .textTheme
                                         .headline1
@@ -137,13 +137,14 @@ class _BuyColorState extends State<BuyColor> {
                             .buyColor(Provider.of<Core>(context, listen: false)
                                 .selectedColor);
                       } else {
-                        ErrorAlert.showError(context, 'Nemáte dostatok bodov');
+                        ErrorAlert.showError(
+                            context, "You don't have enough points!");
                       }
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                           vertical: 20, horizontal: 35),
-                      child: Text('Zakúpiť farby',
+                      child: Text('Buy',
                           style: Theme.of(context).textTheme.headline1.copyWith(
                               fontSize: 20,
                               color: Theme.of(context).backgroundColor)),

@@ -36,7 +36,7 @@ class _ColorListState extends State<ColorList> {
                       },
                       //Display of lready bought colors-------------------------
                       child: Text(
-                        'Kúpené',
+                        'Owned',
                         style: Theme.of(context).textTheme.headline1.copyWith(
                             fontSize: index == 0 ? 25 : 20,
                             color: index == 0
@@ -53,7 +53,7 @@ class _ColorListState extends State<ColorList> {
                         });
                       },
                       child: Text(
-                        'Kúpiť farbu',
+                        'Buy colors',
                         style: Theme.of(context).textTheme.headline1.copyWith(
                             fontSize: index == 0 ? 20 : 25,
                             color: index == 0

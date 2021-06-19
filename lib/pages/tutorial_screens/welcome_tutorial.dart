@@ -20,7 +20,7 @@ class WelcomScreen extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "Vitajte",
+                          "Welcome",
                           style: Theme.of(context)
                               .textTheme
                               .headline1
@@ -35,7 +35,7 @@ class WelcomScreen extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(top: 30),
                       child: Text(
-                        "Cieľom aplikácie je motivovať ľudí k pohybu hravou a súťaživou formou. Vašou úlohou je zaberať si územia vo svojom okolí.",
+                        "The goal of the application is to motivate people to move in a playful and competitive way. Your task is to occupy the territory around you.",
                         style: Theme.of(context)
                             .textTheme
                             .headline3

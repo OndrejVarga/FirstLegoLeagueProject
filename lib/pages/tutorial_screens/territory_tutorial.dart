@@ -12,7 +12,7 @@ class TerritoryTutorial extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Zaberanie územia',
+                'Occupying a territory',
                 style: Theme.of(context)
                     .textTheme
                     .headline1
@@ -23,9 +23,9 @@ class TerritoryTutorial extends StatelessWidget {
                 height: 20,
               ),
               Text(
-                'Územie začnete zaberať stlačením tlačidla s ikonou play.\n' +
-                    'Opätovným stlačením zaberanie ukončíte. \n' +
-                    'Je dôležité, aby zariadenie v čase ukončenia zaberania územia malo prístup na internet.',
+                'To start your route, press the play icon button.\n' +
+                    'Press again to end the route. \n' +
+                    'It is important that the device has internet access at the time the route is finished',
                 style: Theme.of(context)
                     .textTheme
                     .headline3
@@ -37,8 +37,8 @@ class TerritoryTutorial extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
                   child: Image.asset('assets/images/startStop.gif')),
               Text(
-                'Na priradenie územia sa musia čiary pretnúť.\n' +
-                    'Územia môžete kradnúť aj ostatným hráčom, za čo získavate viac bodov. Ak chcete zistiť, komu územie patrí, stačí naň kliknúť.',
+                'The lines must intersect to assign a territory.\n' +
+                    'You can also steal territories from other players, for which you get more points. To find out who owns a territory, just click on it.',
                 style: Theme.of(context)
                     .textTheme
                     .headline3

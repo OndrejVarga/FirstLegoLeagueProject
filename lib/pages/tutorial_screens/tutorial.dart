@@ -56,7 +56,7 @@ class _TutorialTutorialState extends State<TutorialTutorial> {
                         });
                       },
                       child: Text(
-                        'Pokračovať',
+                        'Continue',
                         style: Theme.of(context)
                             .textTheme
                             .headline2

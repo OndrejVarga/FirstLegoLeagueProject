@@ -23,7 +23,7 @@ class BasicData extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.only(bottom: 10),
                   child: Text(
-                    'Poradie',
+                    'Rank',
                     style: Theme.of(context)
                         .textTheme
                         .headline1
@@ -47,7 +47,7 @@ class BasicData extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'Pre viac dát',
+                  'Statistics',
                   style: Theme.of(context)
                       .textTheme
                       .headline1

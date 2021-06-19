@@ -49,12 +49,18 @@ class _AuthPageState extends State<AuthPage> {
       else {
         //Loading images to save a new character
         //Creating User profile in cloud
-
+        print('registering');
+        print(email +
+            password +
+            username +
+            color.value.toString() +
+            weight.toString());
         authResult = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
         if (weight == null) {
           weight = 80;
         }
+        print('registering');
         await FirebaseFirestore.instance
             .collection('users')
             .doc(authResult.user.uid)
@@ -75,13 +81,14 @@ class _AuthPageState extends State<AuthPage> {
             ...Provider.of<ImageController>(context, listen: false).toDatabase
           ]
         });
+        print('registering');
       }
     } catch (err) {
       print('-----------------------------------------------------------');
       print(err);
       print('-----------------------------------------------------------');
       if (mounted) {
-        var message = 'Nastala chyba skontrolujte si svoje údaje';
+        var message = 'An error occurred, check your details';
         if (err.message != null) {
           message = err.message;
         }
@@ -95,10 +102,14 @@ class _AuthPageState extends State<AuthPage> {
       }
     }
 
+    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+    print(FirebaseAuth.instance.currentUser);
+    print(FirebaseAuth.instance.currentUser != null);
     if (FirebaseAuth.instance.currentUser != null) {
       await Provider.of<DataFetcher>(context, listen: false)
           .fetchInitData(context);
-      Navigator.push(context, MaterialPageRoute(builder: (ctx) => MapPage()));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (ctx) => MapPage()));
     }
   }
 

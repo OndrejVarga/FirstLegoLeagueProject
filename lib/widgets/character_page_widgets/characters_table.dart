@@ -21,7 +21,7 @@ class _CharactersTableState extends State<CharactersTable> {
           return TableItem(
             0,
             'm²',
-            'MENO',
+            'NAME',
             '',
             ok: true,
           );

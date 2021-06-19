@@ -11,14 +11,14 @@ class DataKtoreViem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('Pre milovníkov údajov',
+              Text('Statistics',
                   style: Theme.of(context)
                       .textTheme
                       .headline1
                       .copyWith(fontSize: 30),
                   textAlign: TextAlign.start),
               const SizedBox(height: 20, width: 20),
-              Text('Pri hraní si taktiež môžete pozrieť dáta o vašom pokroku.',
+              Text('You can also view data on your progress while playing.',
                   style: Theme.of(context)
                       .textTheme
                       .headline3
