@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'BorderWander',
+        debugShowCheckedModeBanner: false,
         theme: MyTheme.getTheme(context),
         home: MainPage(),
         routes: {

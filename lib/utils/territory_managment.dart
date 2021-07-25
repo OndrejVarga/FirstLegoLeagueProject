@@ -48,6 +48,8 @@ class TerritoryManagment {
     return otherTerritory;
   }
 
+  static List<LatLng> validateNewTerritoryOfSameUser(
+      List<LatLng> otherTerritory, List<LatLng> routePoints) {}
   // static List<LatLng> validateNewTerritoryOnOtherTerritoryWhenParemetes(
   //     List<LatLng> otherTerritory,
   //     List<LatLng> routePoints,

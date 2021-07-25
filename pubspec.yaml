@@ -44,7 +44,6 @@ dev_dependencies:
   maps_toolkit: ^1.1.0+2
   poly: ^1.0.7+2
   carp_background_location: ^1.0.2+1
-  intl: ^0.17.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
